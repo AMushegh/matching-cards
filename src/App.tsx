@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-import { Test } from "@/Test";
 import { bootstrap } from "@/utils/bootstrap";
+
+import { Game } from "@/modules/game/components/Game";
 
 const App = () => {
   const [appReady, setAppReady] = useState<boolean>(false);
@@ -18,7 +19,7 @@ const App = () => {
 
   return (
     <div>
-      <Test />
+      <Game />
     </div>
   );
 };

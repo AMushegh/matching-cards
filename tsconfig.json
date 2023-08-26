@@ -14,7 +14,7 @@
       "@/*": ["*"],
       "@hooks/*": ["utils/hooks/*"]
     },
-    "typeRoots": ["node_modules/@types", "@types"]
+    "typeRoots": ["@types", "node_modules/@types"]
   },
   "include": ["src"]
 }

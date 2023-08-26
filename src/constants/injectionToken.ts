@@ -1,4 +1,6 @@
 export enum InjectionToken {
-  IController = "IController",
-  IService = "IService",
+  //game
+  IGameStore = "IGameStore",
+  IGameController = "IGameController",
+  IGameService = "IGameService",
 }
