@@ -1,9 +1,9 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.tsx",
-  //webpack-dev-server settings
   devServer: {
     static: "./",
     port: 8080,
@@ -41,17 +41,9 @@ module.exports = {
       },
     ],
   },
-  /* Attempt to resolve these extensions in order.
-       If multiple files share the same name but have
-       different extensions, webpack will resolve the
-       one with the extension listed first in the
-       array and skip the rest.
-     */
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
-    alias: {
-      "@": path.resolve(__dirname, "src/"),
-    },
+    plugins: [new TsconfigPathsPlugin()],
   },
   plugins: [
     new HtmlWebpackPlugin({
