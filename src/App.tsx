@@ -8,9 +8,12 @@ const App = () => {
   const [appReady, setAppReady] = useState<boolean>(false);
 
   useEffect(() => {
-    bootstrap()
-      .then(() => setAppReady(true))
-      .catch(() => console.log("should handle laction change"));
+    const boot = async () => {
+      const ready = await bootstrap();
+      setAppReady(ready);
+    };
+
+    boot();
   }, []);
 
   if (!appReady) {

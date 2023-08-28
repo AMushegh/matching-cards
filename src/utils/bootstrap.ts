@@ -8,26 +8,22 @@ import { GameController } from "@/modules/game/GameController";
 
 export type StoreType<T> = UseBoundStore<StoreApi<T>>;
 
-export const bootstrap = () => {
-  return new Promise<void>((resolve, reject) => {
-    try {
-      container.register<IGameService>(
-        InjectionToken.IGameService,
-        GameService,
-        { lifecycle: Lifecycle.Singleton }
-      );
-      container.register<IGameController>(
-        InjectionToken.IGameController,
-        GameController,
-        { lifecycle: Lifecycle.Singleton }
-      );
-      container.register<StoreType<IGameStore>>(InjectionToken.IGameStore, {
-        useValue: useGameStore,
-      });
+export const bootstrap = async () => {
+  try {
+    container.register<IGameService>(InjectionToken.IGameService, GameService, {
+      lifecycle: Lifecycle.Singleton,
+    });
+    container.register<IGameController>(
+      InjectionToken.IGameController,
+      GameController,
+      { lifecycle: Lifecycle.Singleton }
+    );
+    container.register<StoreType<IGameStore>>(InjectionToken.IGameStore, {
+      useValue: useGameStore,
+    });
 
-      resolve();
-    } catch {
-      reject();
-    }
-  });
+    return true;
+  } catch (e) {
+    throw new Error("Error");
+  }
 };
