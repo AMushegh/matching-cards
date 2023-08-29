@@ -10,4 +10,8 @@ export class GameController implements IGameController {
   public addButtonClicked = () => {
     this._gameService.addCard();
   };
+
+  public changePathButtonClicked = () => {
+    this._gameService.changePath();
+  };
 }

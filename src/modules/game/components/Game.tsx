@@ -6,13 +6,13 @@ import { InjectionToken } from "@/constants/injectionToken";
 export const Game = () => {
   const { cards } = useGameStore<IGameStore>((state) => state);
 
-  const { addButtonClicked } = useController<IGameController>(
-    InjectionToken.IGameController
-  );
+  const { addButtonClicked, changePathButtonClicked } =
+    useController<IGameController>(InjectionToken.IGameController);
 
   return (
     <div>
       <button onClick={addButtonClicked}>add</button>
+      <button onClick={changePathButtonClicked}>change path</button>
       {cards.map((card) => (
         <h1 key={card}>{card}</h1>
       ))}

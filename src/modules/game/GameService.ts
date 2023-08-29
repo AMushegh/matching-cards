@@ -5,7 +5,9 @@ import { inject, injectable } from "tsyringe";
 @injectable()
 export class GameService implements IGameService {
   constructor(
-    @inject(InjectionToken.IGameStore) private _store: StoreType<IGameStore>
+    @inject(InjectionToken.IGameStore) private _store: StoreType<IGameStore>,
+    @inject(InjectionToken.IHistoryService)
+    private _historyService: IHistoryService
   ) {}
 
   public addCard(): void {
@@ -15,5 +17,9 @@ export class GameService implements IGameService {
         this._store.getState().cards.length + 1,
       ],
     });
+  }
+
+  public changePath(): void {
+    this._historyService.push("/test");
   }
 }

@@ -1,5 +1,6 @@
 interface IGameController {
   addButtonClicked(): void;
+  changePathButtonClicked(): void;
 }
 
 interface IGameStore {
@@ -8,4 +9,5 @@ interface IGameStore {
 
 interface IGameService {
   addCard(): void;
+  changePath(): void;
 }
