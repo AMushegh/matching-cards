@@ -5,10 +5,10 @@ const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 module.exports = {
   entry: "./src/index.tsx",
   devServer: {
-    static: "./",
     port: 8080,
     hot: true,
     open: true,
+    historyApiFallback: true,
   },
   module: {
     rules: [

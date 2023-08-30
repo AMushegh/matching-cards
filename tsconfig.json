@@ -12,7 +12,8 @@
     "downlevelIteration": true,
     "paths": {
       "@/*": ["*"],
-      "@hooks/*": ["utils/hooks/*"]
+      "@hooks/*": ["utils/hooks/*"],
+      "@history": ["utils/history"]
     },
     "typeRoots": ["@types", "node_modules/@types"]
   },

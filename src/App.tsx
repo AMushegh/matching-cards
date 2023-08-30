@@ -3,6 +3,9 @@ import React, { useEffect, useState } from "react";
 import { bootstrap } from "@/utils/bootstrap";
 
 import { Game } from "@/modules/game/components/Game";
+import { CustomBrowserRouter } from "@/modules/global/CustomRouter";
+import { Route, Routes } from "react-router-dom";
+import Test from "./Test";
 
 const App = () => {
   const [appReady, setAppReady] = useState<boolean>(false);
@@ -21,9 +24,14 @@ const App = () => {
   }
 
   return (
-    <div>
-      <Game />
-    </div>
+    <CustomBrowserRouter>
+      <div>
+        <Routes>
+          <Route path="/" element={<Game />} />
+          <Route path="/test" element={<Test />} />
+        </Routes>
+      </div>
+    </CustomBrowserRouter>
   );
 };
 
