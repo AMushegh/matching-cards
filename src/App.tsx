@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { bootstrap } from "@/utils/bootstrap";
 
 import { Game } from "@/modules/game/components/Game";
-import { CustomBrowserRouter } from "@/modules/global/CustomRouter";
+import { CustomBrowserRouter } from "@/modules/global/history/CustomRouter";
 import { Route, Routes } from "react-router-dom";
 import Test from "./Test";
 

@@ -5,7 +5,7 @@ import { InjectionToken } from "@/constants/injectionToken";
 import { useGameStore } from "@/modules/game/useGameStore";
 import { GameService } from "@/modules/game/GameService";
 import { GameController } from "@/modules/game/GameController";
-import { HistoryService } from "@/modules/global/HistoryService";
+import { HistoryService } from "@/modules/global/history/HistoryService";
 
 export type StoreType<T> = UseBoundStore<StoreApi<T>>;
 
