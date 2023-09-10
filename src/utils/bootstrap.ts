@@ -1,4 +1,4 @@
-import { container, Lifecycle } from "tsyringe";
+import { container, inject, Lifecycle } from "tsyringe";
 import { StoreApi, UseBoundStore } from "zustand";
 
 import { InjectionToken } from "@/constants/injectionToken";
@@ -9,29 +9,33 @@ import { HistoryService } from "@/modules/global/history/HistoryService";
 
 export type StoreType<T> = UseBoundStore<StoreApi<T>>;
 
+function injectDeps() {
+  container.register<IHistoryService>(
+    InjectionToken.IHistoryService,
+    HistoryService,
+    {
+      lifecycle: Lifecycle.Singleton,
+    }
+  );
+
+  // game
+  container.register<IGameService>(InjectionToken.IGameService, GameService, {
+    lifecycle: Lifecycle.Singleton,
+  });
+  container.register<IGameController>(
+    InjectionToken.IGameController,
+    GameController,
+    { lifecycle: Lifecycle.Singleton }
+  );
+  container.register<StoreType<IGameStore>>(InjectionToken.IGameStore, {
+    useValue: useGameStore,
+  });
+}
+
 export const bootstrap = async () => {
   try {
     // global
-    container.register<IHistoryService>(
-      InjectionToken.IHistoryService,
-      HistoryService,
-      {
-        lifecycle: Lifecycle.Singleton,
-      }
-    );
-
-    // game
-    container.register<IGameService>(InjectionToken.IGameService, GameService, {
-      lifecycle: Lifecycle.Singleton,
-    });
-    container.register<IGameController>(
-      InjectionToken.IGameController,
-      GameController,
-      { lifecycle: Lifecycle.Singleton }
-    );
-    container.register<StoreType<IGameStore>>(InjectionToken.IGameStore, {
-      useValue: useGameStore,
-    });
+    injectDeps();
 
     return true;
   } catch (e) {

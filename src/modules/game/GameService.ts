@@ -5,9 +5,9 @@ import { inject, injectable } from "tsyringe";
 @injectable()
 export class GameService implements IGameService {
   constructor(
-    @inject(InjectionToken.IGameStore) private _store: StoreType<IGameStore>,
     @inject(InjectionToken.IHistoryService)
-    private _historyService: IHistoryService
+    private _historyService: IHistoryService,
+    @inject(InjectionToken.IGameStore) private _store: StoreType<IGameStore>
   ) {}
 
   public addCard(): void {
