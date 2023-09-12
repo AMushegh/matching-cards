@@ -10,14 +10,7 @@ export class GameService implements IGameService {
     @inject(InjectionToken.IGameStore) private _store: StoreType<IGameStore>
   ) {}
 
-  public addCard(): void {
-    this._store.setState({
-      cards: [
-        ...this._store.getState().cards,
-        this._store.getState().cards.length + 1,
-      ],
-    });
-  }
+  public addCard(): void {}
 
   public changePath(): void {
     this._historyService.push("/test");

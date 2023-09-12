@@ -3,8 +3,13 @@ interface IGameController {
   changePathButtonClicked(): void;
 }
 
+interface ICard {
+  id: number;
+  title: string;
+  pairId: number;
+}
 interface IGameStore {
-  cards: number[];
+  cards: ICard[];
 }
 
 interface IGameService {

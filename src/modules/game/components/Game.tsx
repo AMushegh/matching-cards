@@ -13,9 +13,6 @@ export const Game = () => {
     <div>
       <button onClick={addButtonClicked}>add</button>
       <button onClick={changePathButtonClicked}>change path</button>
-      {cards.map((card) => (
-        <h1 key={card}>{card}</h1>
-      ))}
     </div>
   );
 };
