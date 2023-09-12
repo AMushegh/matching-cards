@@ -7,11 +7,11 @@ export class GameController implements IGameController {
     @inject(InjectionToken.IGameService) private _gameService: IGameService
   ) {}
 
-  public addButtonClicked = () => {
-    this._gameService.addCard();
-  };
-
   public changePathButtonClicked = () => {
     this._gameService.changePath();
+  };
+
+  public cardClicked = (cardId: number) => {
+    this._gameService.flipCard(cardId);
   };
 }

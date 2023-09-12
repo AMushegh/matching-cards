@@ -1,6 +1,8 @@
+import { inject, injectable } from "tsyringe";
+import { produce } from "immer";
+
 import { InjectionToken } from "@/constants/injectionToken";
 import { StoreType } from "@/utils/bootstrap";
-import { inject, injectable } from "tsyringe";
 
 @injectable()
 export class GameService implements IGameService {
@@ -10,9 +12,15 @@ export class GameService implements IGameService {
     @inject(InjectionToken.IGameStore) private _store: StoreType<IGameStore>
   ) {}
 
-  public addCard(): void {}
-
   public changePath(): void {
     this._historyService.push("/test");
+  }
+
+  public flipCard(cardId: number): void {
+    produce<IGameStore>((state) => {
+      state.cards.map((card) =>
+        card.id === cardId ? { ...card, active: !card.active } : card
+      );
+    });
   }
 }

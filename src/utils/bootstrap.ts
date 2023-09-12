@@ -10,6 +10,7 @@ import { HistoryService } from "@/modules/global/history/HistoryService";
 export type StoreType<T> = UseBoundStore<StoreApi<T>>;
 
 function injectDeps() {
+  // global
   container.register<IHistoryService>(
     InjectionToken.IHistoryService,
     HistoryService,
@@ -34,7 +35,6 @@ function injectDeps() {
 
 export const bootstrap = async () => {
   try {
-    // global
     injectDeps();
 
     return true;
