@@ -1,13 +1,10 @@
-import { container, inject, Lifecycle } from "tsyringe";
-import { StoreApi, UseBoundStore } from "zustand";
+import { container, Lifecycle } from "tsyringe";
 
 import { InjectionToken } from "@/constants/injectionToken";
 import { useGameStore } from "@/modules/game/useGameStore";
 import { GameService } from "@/modules/game/GameService";
 import { GameController } from "@/modules/game/GameController";
 import { HistoryService } from "@/modules/global/history/HistoryService";
-
-export type StoreType<T> = UseBoundStore<StoreApi<T>>;
 
 function injectDeps() {
   // global

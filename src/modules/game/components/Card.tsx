@@ -9,7 +9,9 @@ type PropsType = {
 };
 
 export const Card = ({ id, title }: PropsType) => {
-  const {} = useController<IGameController>(InjectionToken.IGameController);
+  const { cardClicked } = useController<IGameController>(
+    InjectionToken.IGameController
+  );
 
-  return <div>{title}</div>;
+  return <div onClick={() => cardClicked(id)}>{title}</div>;
 };

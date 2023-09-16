@@ -2,7 +2,6 @@ import { inject, injectable } from "tsyringe";
 import { produce } from "immer";
 
 import { InjectionToken } from "@/constants/injectionToken";
-import { StoreType } from "@/utils/bootstrap";
 
 @injectable()
 export class GameService implements IGameService {
@@ -17,10 +16,12 @@ export class GameService implements IGameService {
   }
 
   public flipCard(cardId: number): void {
-    produce<IGameStore>((state) => {
-      state.cards.map((card) =>
-        card.id === cardId ? { ...card, active: !card.active } : card
-      );
-    });
+    this._store.setState(
+      produce<IGameStore>((state) => {
+        state.cards = state.cards.map((card) =>
+          card.id === cardId ? { ...card, active: !card.active } : card
+        );
+      })
+    );
   }
 }
