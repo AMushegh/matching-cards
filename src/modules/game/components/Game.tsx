@@ -7,8 +7,6 @@ import { Card } from "@/modules/game/components/Card";
 export const Game = () => {
   const { cards } = useGameStore<IGameStore>((state) => state);
 
-  console.log(cards);
-
   const { changePathButtonClicked } = useController<IGameController>(
     InjectionToken.IGameController
   );
