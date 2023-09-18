@@ -1,6 +1,7 @@
 interface IGameController {
   changePathButtonClicked(): void;
   cardClicked(cardId: number): void;
+  gameInitialized(): void;
 }
 
 interface ICard {
@@ -18,4 +19,9 @@ interface IGameStore {
 interface IGameService {
   changePath(): void;
   flipCard(cardId: number): void;
+  fetchCards(): Promise<void>;
+}
+
+interface IGameApiService {
+  getCards(): Promise<ICard[]>;
 }

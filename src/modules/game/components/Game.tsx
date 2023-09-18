@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useGameStore } from "@/modules/game/useGameStore";
 import { useController } from "@/utils/hooks/useController";
 import { InjectionToken } from "@/constants/injectionToken";
@@ -7,9 +7,12 @@ import { Card } from "@/modules/game/components/Card";
 export const Game = () => {
   const { cards } = useGameStore<IGameStore>((state) => state);
 
-  const { changePathButtonClicked } = useController<IGameController>(
-    InjectionToken.IGameController
-  );
+  const { changePathButtonClicked, gameInitialized } =
+    useController<IGameController>(InjectionToken.IGameController);
+
+  useEffect(() => {
+    gameInitialized();
+  }, []);
 
   return (
     <div>

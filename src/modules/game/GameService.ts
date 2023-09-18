@@ -8,7 +8,9 @@ export class GameService implements IGameService {
   constructor(
     @inject(InjectionToken.IHistoryService)
     private _historyService: IHistoryService,
-    @inject(InjectionToken.IGameStore) private _store: StoreType<IGameStore>
+    @inject(InjectionToken.IGameStore) private _store: StoreType<IGameStore>,
+    @inject(InjectionToken.IGameApiService)
+    private _gameApiService: IGameApiService
   ) {}
 
   public changePath(): void {
@@ -23,5 +25,24 @@ export class GameService implements IGameService {
         );
       })
     );
+  }
+
+  public async fetchCards(): Promise<void> {
+    try {
+      this._store.setState(
+        produce<IGameStore>((state) => {
+          state.cardsFetching = true;
+        })
+      );
+
+      const cards = await this._gameApiService.getCards();
+
+      this._store.setState(
+        produce<IGameStore>((state) => {
+          state.cards = cards;
+          state.cardsFetching = false;
+        })
+      );
+    } catch (e) {}
   }
 }

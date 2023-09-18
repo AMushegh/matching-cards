@@ -6,4 +6,5 @@ export enum InjectionToken {
   IGameStore = "IGameStore",
   IGameController = "IGameController",
   IGameService = "IGameService",
+  IGameApiService = "IGameApiService",
 }

@@ -14,4 +14,8 @@ export class GameController implements IGameController {
   public cardClicked = (cardId: number) => {
     this._gameService.flipCard(cardId);
   };
+
+  public gameInitialized = () => {
+    this._gameService.fetchCards();
+  };
 }
