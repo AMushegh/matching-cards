@@ -1,7 +1,7 @@
 import { inject, injectable } from "tsyringe";
 import { produce } from "immer";
 
-import { InjectionToken } from "@/constants/injectionToken";
+import { InjectionToken } from "@/constants/injection-token";
 
 @injectable()
 export class GameService implements IGameService {

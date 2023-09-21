@@ -1,6 +1,7 @@
 export enum InjectionToken {
   //global
   IHistoryService = "IHistoryService",
+  IApiService = "IApiService",
 
   //game
   IGameStore = "IGameStore",

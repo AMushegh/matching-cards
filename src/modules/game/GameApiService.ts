@@ -1,13 +1,13 @@
+import { InjectionToken } from "@/constants/injection-token";
+import { injectable, inject } from "tsyringe";
+
+@injectable()
 export class GameApiService implements IGameApiService {
-  public async getCards(): Promise<ICard[]> {
-    return Promise.resolve<ICard[]>([
-      {
-        active: true,
-        id: 1,
-        isGuessed: false,
-        pairId: 2,
-        title: "title1",
-      },
-    ]);
+  constructor(
+    @inject(InjectionToken.IApiService) private _apiService: IApiService
+  ) {}
+
+  public async getCards() {
+    return this._apiService.makeRequest<ICard[]>(RequestMethod.GET, "/cards");
   }
 }

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useGameStore } from "@/modules/game/useGameStore";
 import { useController } from "@/utils/hooks/useController";
-import { InjectionToken } from "@/constants/injectionToken";
+import { InjectionToken } from "@/constants/injection-token";
 import { Card } from "@/modules/game/components/Card";
 
 export const Game = () => {

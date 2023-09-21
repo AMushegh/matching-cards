@@ -1,10 +1,13 @@
 import axios, { AxiosInstance } from "axios";
 
-class ApiService {
-  private instance: AxiosInstance;
+export class ApiService implements IApiService {
+  private _instance: AxiosInstance;
 
   constructor() {
-    // TODO: configure instance
-    this.instance = axios.create();
+    this._instance = axios.create();
+  }
+
+  public async makeRequest<T>(type: RequestMethodType, url: string) {
+    return this._instance[type]<T>(url).then(({ data }) => data);
   }
 }

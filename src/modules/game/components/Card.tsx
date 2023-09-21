@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useController } from "@/utils/hooks/useController";
-import { InjectionToken } from "@/constants/injectionToken";
+import { InjectionToken } from "@/constants/injection-token";
 
 type PropsType = {
   id: number;

@@ -1,4 +1,4 @@
-import { InjectionToken } from "@/constants/injectionToken";
+import { InjectionToken } from "@/constants/injection-token";
 import { inject, injectable } from "tsyringe";
 
 @injectable()
