@@ -25,12 +25,10 @@ const App = () => {
 
   return (
     <CustomBrowserRouter>
-      <div>
-        <Routes>
-          <Route path="/" element={<Game />} />
-          <Route path="/test" element={<Test />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<Game />} />
+        <Route path="/test" element={<Test />} />
+      </Routes>
     </CustomBrowserRouter>
   );
 };
