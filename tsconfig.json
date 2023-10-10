@@ -13,7 +13,8 @@
     "paths": {
       "@/*": ["*"],
       "@hooks/*": ["utils/hooks/*"],
-      "@history": ["utils/history"]
+      "@history": ["utils/history"],
+      "@helpers": ["utils/helpers"]
     },
     "typeRoots": ["@types", "node_modules/@types"]
   },

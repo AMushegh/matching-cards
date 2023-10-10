@@ -6,4 +6,5 @@ interface IHistoryServiceURL {
 
 interface IHistoryService {
   push(url: string | Partial<IHistoryServiceURL>): void;
+  replace(url: string): void;
 }

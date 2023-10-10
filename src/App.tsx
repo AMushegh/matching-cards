@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 
 import { bootstrap } from "@/utils/bootstrap";
 
-import { Game } from "@/modules/game/components/Game";
 import { CustomBrowserRouter } from "@/modules/global/history/CustomRouter";
-import { Route, Routes } from "react-router-dom";
-import Test from "./Test";
+import { Navigate, Route, Routes } from "react-router-dom";
+import { Login } from "@/modules/global/auth/Login";
+import { Game } from "./modules/game/components/Game";
+import { ProtectedRoute } from "./ProtectedRoute";
+import { AppLayout } from "./AppLayout";
 
 const App = () => {
   const [appReady, setAppReady] = useState<boolean>(false);
@@ -26,8 +28,18 @@ const App = () => {
   return (
     <CustomBrowserRouter>
       <Routes>
-        <Route path="/" element={<Game />} />
-        <Route path="/test" element={<Test />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<AppLayout />}>
+          <Route element={<ProtectedRoute />}>
+            <Route path="/game" element={<Game />} />
+          </Route>
+          <Route element={<ProtectedRoute />}>
+            <Route path="/" element={<Navigate to="game" />} />
+          </Route>
+        </Route>
+        <Route element={<ProtectedRoute />}>
+          <Route path="*" element={<div>Not Found</div>} />
+        </Route>
       </Routes>
     </CustomBrowserRouter>
   );

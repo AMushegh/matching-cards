@@ -14,4 +14,8 @@ export class HistoryService implements IHistoryService {
   public push(url: string | Partial<IHistoryServiceURL>): void {
     this._history.push(url);
   }
+
+  public replace(url: string): void {
+    this._history.replace(url);
+  }
 }
