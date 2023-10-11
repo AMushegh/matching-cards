@@ -1,24 +1,23 @@
 import React, { useEffect, useState } from "react";
-
-import { bootstrap } from "@/utils/bootstrap";
+import { useController } from "@hooks/useController";
+import { InjectionToken } from "./constants/injection-token";
 
 type PropsType = {
   children: React.ReactNode;
 };
 
 const App = ({ children }: PropsType) => {
-  const [appReady, setAppReady] = useState<boolean>(false);
+  const [isAuthChecked, setIsAuthChecked] = useState<boolean>(false);
+  const { appReady } = useController<IAuthController>(
+    InjectionToken.IAuthController
+  );
 
   useEffect(() => {
-    const boot = async () => {
-      const ready = await bootstrap();
-      setAppReady(ready);
-    };
-
-    boot();
+    appReady();
+    setIsAuthChecked(true);
   }, []);
 
-  if (!appReady) {
+  if (!isAuthChecked) {
     return <h1>Loading...</h1>;
   }
 

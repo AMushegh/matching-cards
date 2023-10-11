@@ -4,8 +4,10 @@ interface IAuthStore {
 
 interface IAuthService {
   login(): void;
+  setAuthStateOnAppReady(): void;
 }
 
 interface IAuthController {
-  loginClicked(): void;
+  loginSumbitted(): void;
+  appReady(): void;
 }

@@ -11,7 +11,7 @@ import { AuthService } from "@/modules/shared/auth/AuthService";
 import { useAuthStore } from "@/modules/shared/auth/useAuthStore";
 import { AuthController } from "@/modules/shared/auth/AuthController";
 
-function injectDeps() {
+export function injectDeps() {
   // global
   container.register<IHistoryService>(
     InjectionToken.IHistoryService,
@@ -55,13 +55,3 @@ function injectDeps() {
     useValue: useGameStore,
   });
 }
-
-export const bootstrap = async () => {
-  try {
-    injectDeps();
-
-    return true;
-  } catch (e) {
-    throw new Error("Error");
-  }
-};

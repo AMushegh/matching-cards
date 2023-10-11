@@ -7,7 +7,11 @@ export class AuthController implements IAuthController {
     @inject(InjectionToken.IAuthService) private _authService: IAuthService
   ) {}
 
-  public loginClicked = () => {
+  public loginSumbitted = () => {
     this._authService.login();
+  };
+
+  public appReady = () => {
+    this._authService.setAuthStateOnAppReady();
   };
 }

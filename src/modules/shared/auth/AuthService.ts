@@ -11,12 +11,24 @@ export class AuthService implements IAuthService {
     private _historyService: IHistoryService
   ) {}
 
-  login(): void {
+  public setAuthStateOnAppReady(): void {
+    const isLogedin = Boolean(window.localStorage.getItem("logedIn"));
+    if (isLogedin) {
+      this._authStore.setState(
+        produce<IAuthStore>((state) => {
+          state.isLoggedIn = true;
+        })
+      );
+    }
+  }
+
+  public login(): void {
     this._authStore.setState(
       produce<IAuthStore>((state) => {
         state.isLoggedIn = true;
       })
     );
+    window.localStorage.setItem("logedIn", "true");
 
     this._historyService.replace("/");
   }
