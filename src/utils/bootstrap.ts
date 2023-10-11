@@ -1,15 +1,15 @@
 import { container, Lifecycle } from "tsyringe";
 
 import { InjectionToken } from "@/constants/injection-token";
-import { HistoryService } from "@/modules/global/history/HistoryService";
+import { HistoryService } from "@/modules/shared/routes/HistoryService";
 import { useGameStore } from "@/modules/game/useGameStore";
 import { GameService } from "@/modules/game/GameService";
 import { GameController } from "@/modules/game/GameController";
 import { GameApiService } from "@/modules/game/GameApiService";
-import { ApiService } from "@/modules/global/api/ApiService";
-import { AuthService } from "@/modules/global/auth/AuthService";
-import { useAuthStore } from "@/modules/global/auth/useAuthStore";
-import { AuthController } from "@/modules/global/auth/AuthController";
+import { ApiService } from "@/modules/shared/api/ApiService";
+import { AuthService } from "@/modules/shared/auth/AuthService";
+import { useAuthStore } from "@/modules/shared/auth/useAuthStore";
+import { AuthController } from "@/modules/shared/auth/AuthController";
 
 function injectDeps() {
   // global

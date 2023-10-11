@@ -1,11 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 
-type PropsType = {
-  children?: React.ReactNode;
-};
-
-export const AppLayout = ({ children }: PropsType) => {
+export const Layout = () => {
   return (
     <div>
       <div>Navigation</div>
