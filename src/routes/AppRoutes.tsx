@@ -1,11 +1,11 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 
-import { CustomBrowserRouter } from "./CustomRouter";
+import { CustomBrowserRouter } from "@routes/CustomRouter";
 import { Login } from "@/modules/shared/auth/components/Login";
 import { ProtectedRoute } from "./ProtectedRoute";
 import { Game } from "@/modules/game/components/Game";
-import { Layout } from "@/modules/shared/Layout";
+import { Layout } from "@/Layout";
 
 export const AppRoutes = () => {
   return (

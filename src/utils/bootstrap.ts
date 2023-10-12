@@ -1,7 +1,7 @@
 import { container, Lifecycle } from "tsyringe";
 
 import { InjectionToken } from "@/constants/injection-token";
-import { HistoryService } from "@/modules/shared/routes/HistoryService";
+import { HistoryService } from "@/modules/shared/history/HistoryService";
 import { useGameStore } from "@/modules/game/useGameStore";
 import { GameService } from "@/modules/game/GameService";
 import { GameController } from "@/modules/game/GameController";
@@ -55,3 +55,22 @@ export function injectDeps() {
     useValue: useGameStore,
   });
 }
+
+const initServices = () => {
+  const authService = container.resolve<IAuthService>(
+    InjectionToken.IAuthService
+  );
+
+  authService.setAuthStateOnAppReady();
+};
+
+export const bootstrap = async () => {
+  try {
+    injectDeps();
+    initServices();
+
+    return true;
+  } catch (e) {
+    throw new Error(e);
+  }
+};

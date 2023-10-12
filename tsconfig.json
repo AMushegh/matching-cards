@@ -14,7 +14,8 @@
       "@/*": ["*"],
       "@hooks/*": ["utils/hooks/*"],
       "@history": ["utils/history"],
-      "@helpers": ["utils/helpers"]
+      "@helpers": ["utils/helpers"],
+      "@routes/*": ["routes/*"]
     },
     "typeRoots": ["@types", "node_modules/@types"]
   },
